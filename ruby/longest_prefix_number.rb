@@ -1,23 +1,19 @@
-require 'byebug'
-
 class LongestPrefixNumber
   def self.find(inputs)
-    prefixes = []
+    prefixes_count = Hash.new(0)
 
     inputs.each do |input|
-      prefixes += prefixes(input)
+      input.length.times do |i|
+        prefix = input[0..i]
+        prefixes_count[prefix] += 1
+      end
     end
 
-    prefixes = prefixes.sort_by { |array| -array.length }
-
     most_frequent_prefix = ''
-    most_frequent_prefix_count = 0
 
-    prefixes.flatten.each do |prefix|
-      count = prefixes.select {|e| e == prefix }.length
-      if count > most_frequent_prefix_count && count == inputs.length
+    prefixes_count.each do |prefix, count|
+      if count == inputs.length && prefix.length > most_frequent_prefix.length
         most_frequent_prefix = prefix
-        most_frequent_prefix_count = count
       end
     end
 
