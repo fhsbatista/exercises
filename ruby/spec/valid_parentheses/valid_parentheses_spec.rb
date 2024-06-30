@@ -2,7 +2,7 @@ require "spec_helper"
 require "./valid_parentheses"
 
 RSpec.describe RomanNumber do
-  describe "#valid?", :focus do
+  describe "#valid?" do
     it { expect(ValidParentheses.valid?("()")).to eq(true) }
     it { expect(ValidParentheses.valid?("[()]")).to eq(true) }
     it { expect(ValidParentheses.valid?("()[]{}")).to eq(true) }
